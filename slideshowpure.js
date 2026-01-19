@@ -1091,6 +1091,13 @@ const SlideshowManager = {
         const previousSlide = container.querySelector(".slide.active");
         if (previousSlide && previousSlide !== nextSlide) {
             previousSlide.classList.remove("active");
+            previousSlide.style.opacity = '0';
+            // Hide the previous slide after fade completes
+            setTimeout(() => {
+                if (!previousSlide.classList.contains('active')) {
+                    previousSlide.style.display = 'none';
+                }
+            }, CONFIG.fadeTransitionDuration);
              if (CONFIG.slideAnimationEnabled) {
                  previousSlide.querySelector(".backdrop")?.classList.remove("animate");
                  previousSlide.querySelector(".logo")?.classList.remove("animate");
