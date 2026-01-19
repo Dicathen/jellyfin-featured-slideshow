@@ -1092,7 +1092,6 @@ const SlideshowManager = {
         if (previousSlide && previousSlide !== nextSlide) {
             previousSlide.classList.remove("active");
             previousSlide.style.opacity = '0';
-            // Hide the previous slide after fade completes
             setTimeout(() => {
                 if (!previousSlide.classList.contains('active')) {
                     previousSlide.style.display = 'none';
@@ -1103,6 +1102,7 @@ const SlideshowManager = {
                  previousSlide.querySelector(".logo")?.classList.remove("animate");
              }
         }
+        nextSlide.style.display = 'block';
         nextSlide.style.opacity = '0';
         nextSlide.classList.add('active');
         if (STATE.slideshow.isPaused) nextSlide.classList.add('slideshow-paused');
